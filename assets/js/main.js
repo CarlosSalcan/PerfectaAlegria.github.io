@@ -10,7 +10,7 @@
 		$head = $('head'),
 		$body = $('body');
 
-	// Breakpoints.
+	// Puntos de interrupción.
 	breakpoints({
 		xlarge: ['1281px', '1680px'],
 		large: ['981px', '1280px'],
@@ -22,9 +22,7 @@
 		'small-to-xlarge': '(min-width: 481px) and (max-width: 1680px)'
 	});
 
-	// Stops animations/transitions until the page has ...
-
-	// ... loaded.
+	// Detiene las animaciones/transiciones hasta que la página se haya cargado.
 	$window.on('load', function () {
 		window.setTimeout(function () {
 			$body.removeClass('is-preload');
@@ -36,10 +34,10 @@
 
 	$window.on('resize', function () {
 
-		// Mark as resizing.
+		// Mark as resizing (redimensionado).
 		$body.addClass('is-resizing');
 
-		// Unmark after delay.
+		// Unmark after delay (Desmarcar).
 		clearTimeout(resizeTimeout);
 
 		resizeTimeout = setTimeout(function () {
@@ -73,7 +71,7 @@
 	var $sidebar = $('#sidebar'),
 		$sidebar_inner = $sidebar.children('.inner');
 
-	// Inactive by default on <= large.
+	// Inactivo por defecto en <= grande.
 	breakpoints.on('<=large', function () {
 		$sidebar.addClass('inactive');
 	});
@@ -88,12 +86,12 @@
 		$('<style>#sidebar .inner::-webkit-scrollbar { display: none; }</style>')
 			.appendTo($head);
 
-	// Toggle.
+	// Toggle (Alternacion).
 	$('<a href="#sidebar" class="toggle">Toggle</a>')
 		.appendTo($sidebar)
 		.on('click', function (event) {
 
-			// Prevent default.
+			// Prevent default (Impedir Defecto).
 			event.preventDefault();
 			event.stopPropagation();
 
@@ -106,8 +104,6 @@
 
 	// Link clicks.
 	$sidebar.on('click', 'a', function (event) {
-
-		// >large? Bail.
 		if (breakpoints.active('>large'))
 			return;
 
@@ -139,7 +135,7 @@
 
 	});
 
-	// Prevent certain events inside the panel from bubbling.
+	// Prevent certain events inside the panel from bubbling (Evitar Burbugjeo).
 	$sidebar.on('click touchend touchstart touchmove', function (event) {
 
 		// >large? Bail.
@@ -151,7 +147,7 @@
 
 	});
 
-	// Hide panel on body click/tap.
+	// Hide panel on body click/tap (Ocultar panel).
 	$body.on('click touchend', function (event) {
 
 		// >large? Bail.
@@ -166,7 +162,6 @@
 	// Scroll lock.
 	// Note: If you do anything to change the height of the sidebar's content, be sure to
 	// trigger 'resize.sidebar-lock' on $window so stuff doesn't get out of sync.
-
 	$window.on('load.sidebar-lock', function () {
 
 		var sh, wh, st;
@@ -226,7 +221,7 @@
 				wh = $window.height();
 				sh = $sidebar_inner.outerHeight() + 30;
 
-				// Trigger scroll.
+				// Active scroll.
 				$window.trigger('scroll.sidebar-lock');
 
 			})

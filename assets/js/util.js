@@ -177,7 +177,7 @@
 
 				}
 
-			// Event: Touch stuff.
+			// Event: Tocar cosas.
 				$this.on('touchstart', function(event) {
 
 					$this.touchPosX = event.originalEvent.touches[0].pageX;
@@ -196,7 +196,7 @@
 						th = $this.outerHeight(),
 						ts = ($this.get(0).scrollHeight - $this.scrollTop());
 
-					// Hide on swipe?
+					// Ocultar al deslizar
 						if (config.hideOnSwipe) {
 
 							var result = false,
@@ -249,12 +249,12 @@
 
 				});
 
-			// Event: Prevent certain events inside the panel from bubbling.
+			// Event: Burbujeo
 				$this.on('click touchend touchstart touchmove', function(event) {
 					event.stopPropagation();
 				});
 
-			// Event: Hide panel if a child anchor tag pointing to its ID is clicked.
+			// Event: Ocultar el panel si se hace clic en una etiqueta de anclaje secundaria que apunte a su ID.
 				$this.on('click', 'a[href="#' + id + '"]', function(event) {
 
 					event.preventDefault();
@@ -361,74 +361,7 @@
 							.removeClass('polyfill-placeholder')
 							.val('');
 
-				});
-
-		// Password.
-			$this.find('input[type=password]')
-				.each(function() {
-
-					var i = $(this);
-					var x = $(
-								$('<div>')
-									.append(i.clone())
-									.remove()
-									.html()
-									.replace(/type="password"/i, 'type="text"')
-									.replace(/type=password/i, 'type=text')
-					);
-
-					if (i.attr('id') != '')
-						x.attr('id', i.attr('id') + '-polyfill-field');
-
-					if (i.attr('name') != '')
-						x.attr('name', i.attr('name') + '-polyfill-field');
-
-					x.addClass('polyfill-placeholder')
-						.val(x.attr('placeholder')).insertAfter(i);
-
-					if (i.val() == '')
-						i.hide();
-					else
-						x.hide();
-
-					i
-						.on('blur', function(event) {
-
-							event.preventDefault();
-
-							var x = i.parent().find('input[name=' + i.attr('name') + '-polyfill-field]');
-
-							if (i.val() == '') {
-
-								i.hide();
-								x.show();
-
-							}
-
-						});
-
-					x
-						.on('focus', function(event) {
-
-							event.preventDefault();
-
-							var i = x.parent().find('input[name=' + x.attr('name').replace('-polyfill-field', '') + ']');
-
-							x.hide();
-
-							i
-								.show()
-								.focus();
-
-						})
-						.on('keypress', function(event) {
-
-							event.preventDefault();
-							x.val('');
-
-						});
-
-				});
+				})
 
 		// Events.
 			$this
