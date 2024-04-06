@@ -327,7 +327,7 @@ header.main> :last-child {
 }
 
 #sidebar .inner .mini-posts .image img {
-  margin-left: 20px;
+  margin-left: 15px;
   max-height: 200px;
   max-width: 250px;
   border-radius: 30px;
@@ -389,7 +389,7 @@ a.image {
 }
 
 .lista ul {
-  padding: 0 20px;
+  padding: 0 10px;
 }
 
 .lista li {
